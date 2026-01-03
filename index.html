@@ -1,78 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Somansh Dubey | Software Engineer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-      color: #111;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 60px 20px;
-    }
-    h1, h2 {
-      line-height: 1.2;
-    }
-    h1 {
-      font-size: 2.5rem;
-    }
-    h2 {
-      margin-top: 50px;
-    }
-    p {
-      font-size: 1.05rem;
-    }
-    .muted {
-      color: #555;
-    }
-    .section {
-      margin-top: 40px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Somansh Dubey | Software Engineer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+:root {
+  --bg: #0b0b11;
+  --card: #15151f;
+  --text: #eaeaf0;
+  --muted: #9fa0b8;
+  --accent: linear-gradient(135deg, #5eead4, #818cf8);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, #111827, var(--bg));
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 980px;
+  margin: auto;
+  padding: 90px 24px;
+}
+
+/* ---------------- HERO ---------------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 32px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.hero img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 0 6px rgba(255,255,255,0.02);
+}
+
+h1 {
+  font-size: 3.2rem;
+  margin: 0;
+  background: var(--accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 700px;
+}
+
+.wink {
+  color: #c7d2fe;
+  font-style: italic;
+}
+
+/* ---------------- SECTIONS ---------------- */
+
+.section {
+  background: var(--card);
+  padding: 34px 38px;
+  border-radius: 18px;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section:hover {
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+h2 {
+  font-size: 1.9rem;
+  margin-top: 0;
+}
+
+.muted { color: var(--muted); }
+
+/* ---------------- LISTS ---------------- */
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 12px;
+}
+
+/* ---------------- FOOTER ---------------- */
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 80px;
+  font-size: 0.95rem;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero img {
+    margin: auto;
+  }
+}
+</style>
 </head>
+
 <body>
+<div class="container">
 
-  <div class="container">
-    <h1>Somansh Dubey</h1>
-    <p class="muted">
-      Software Engineer working on distributed systems, networking, and AI-assisted tooling
-    </p>
-
-    <div class="section">
-      <h2>About</h2>
-      <p>
-        I am a software engineer with a strong interest in understanding complex systems deeply —
-        networking stacks, distributed systems, and the design decisions behind them.
-        I enjoy breaking down complicated ideas into clear mental models.
+  <!-- HERO -->
+  <div class="hero">
+    <img src="assets/me.jpg" alt="Somansh Dubey" />
+    <div>
+      <h1>Somansh Dubey</h1>
+      <p class="tagline">
+        I design and build systems that scale, route packets correctly,
+        and survive contact with real-world traffic —
+        <span class="wink">sometimes even on the first try.</span>
       </p>
-    </div>
-
-    <div class="section">
-      <h2>Experience</h2>
-      <p>
-        <strong>Cisco Systems</strong> — Software Engineer<br />
-        Working on networking and systems-level features involving packet tracing,
-        hardware testbeds, and large-scale routing platforms.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>Projects</h2>
-      <p>
-        <strong>Session Affinity Engine</strong><br />
-        Designed and implemented a session affinity system based on 5-tuple flows,
-        simulating Layer-4 load balancer behavior with session stickiness and path tracking.
+      <p class="muted">
+        Software Engineer · Distributed Systems Engineering · Cisco
       </p>
     </div>
   </div>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <h2>About</h2>
+    <p>
+      Software Engineer at Cisco working on large-scale networking and
+      distributed systems. I enjoy diving deep into datapaths,
+      control-plane synchronization, and the parts of systems
+      that usually fail at 3 a.m.
+    </p>
+    <p>
+      Formally trained as a Mechanical Engineer from IIT Kanpur
+      (with a minor in Computer Science),
+      which means I overthink edge cases and respect physics.
+    </p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <h2>Experience — Cisco Systems</h2>
+    <p class="muted">Distributed Systems Engineering · Aug 2024 – Present</p>
+
+    <ul>
+      <li>
+        Architected satellite (port-extender) datapath support enabling
+        low-bandwidth access ports to operate over high-bandwidth host interfaces
+        with full control-plane and forwarding-plane synchronization.
+      </li>
+      <li>
+        Built production-grade support for inventory management,
+        environmental monitoring, alarm propagation, and traffic forwarding
+        across host–satellite topologies.
+      </li>
+      <li>
+        Designed an AI-driven microcode testbench test case generator
+        using a Retrieval-Augmented Generation (RAG) pipeline with Milvus,
+        drastically reducing test development time.
+      </li>
+      <li>
+        Reduced microcode test case creation cycles from days to hours by
+        automating test scaffolding, mutation, and validation workflows.
+      </li>
+      <li>
+        Optimized chip statistics allocation and built internal tooling
+        for automated log extraction and error classification
+        during large-scale production escalations.
+      </li>
+    </ul>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <h2>Key Projects</h2>
+
+    <p><strong>CF-Stress — Concurrent Online Judge</strong></p>
+    <ul>
+      <li>
+        Built a concurrent online judge in Go with Redis to stress-test
+        competitive programming solutions using adversarial inputs.
+      </li>
+      <li>
+        Supported 500+ concurrent users with ~95% accuracy
+        in identifying failing submissions.
+      </li>
+    </ul>
+
+    <p><strong>Autonomous Ground Vehicle</strong></p>
+    <ul>
+      <li>
+        Implemented CNN-based object detection using ROS and OpenCV
+        for real-time navigation.
+      </li>
+      <li>
+        Evaluated Dijkstra, A*, and flood-fill path planning algorithms
+        across simulated and real environments.
+      </li>
+    </ul>
+  </div>
+
+  <!-- LEADERSHIP -->
+  <div class="section">
+    <h2>Leadership</h2>
+    <p>
+      Head of Public Relations, Antaragni’23 (IIT Kanpur)
+    </p>
+    <ul>
+      <li>
+        Led a 120+ member team across multi-tier coordination structures.
+      </li>
+      <li>
+        Managed sponsorships and partnerships worth INR 20M,
+        increasing festival reach by 1.6× YoY.
+      </li>
+    </ul>
+  </div>
+
+  <footer>
+    Built with curiosity, caffeine, and an unreasonable love for systems.
+  </footer>
+
+</div>
+
+<script>
+  const sections = document.querySelectorAll('.section');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  sections.forEach(sec => observer.observe(sec));
+</script>
 
 </body>
 </html>
