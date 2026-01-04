@@ -7,10 +7,10 @@
 
 <style>
 :root {
-  --bg: #0b0b11;
-  --card: #15151f;
-  --text: #eaeaf0;
-  --muted: #9fa0b8;
+  --bg: #0b0b12;
+  --surface: #141422;
+  --text: #e8e8f0;
+  --muted: #a2a4c0;
   --accent: linear-gradient(135deg, #5eead4, #818cf8);
 }
 
@@ -19,249 +19,339 @@
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: radial-gradient(circle at top, #111827, var(--bg));
+  background: var(--bg);
   color: var(--text);
-  line-height: 1.7;
+  line-height: 1.8;
+}
+
+section {
+  padding: 120px 24px;
 }
 
 .container {
-  max-width: 980px;
+  max-width: 1100px;
   margin: auto;
-  padding: 90px 24px;
 }
 
-/* ---------------- HERO ---------------- */
-
-.hero {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 32px;
-  align-items: center;
-  margin-bottom: 80px;
-}
-
-.hero img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid rgba(255,255,255,0.1);
-  box-shadow: 0 0 0 6px rgba(255,255,255,0.02);
-}
+/* ---------------- HEADINGS ---------------- */
 
 h1 {
-  font-size: 3.2rem;
+  font-size: 4rem;
   margin: 0;
   background: var(--accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.tagline {
-  font-size: 1.2rem;
+h2 {
+  font-size: 2.4rem;
+  margin-bottom: 24px;
+}
+
+p {
+  font-size: 1.15rem;
   color: var(--muted);
-  max-width: 700px;
+  max-width: 720px;
 }
 
-.wink {
-  color: #c7d2fe;
-  font-style: italic;
+/* ---------------- HERO ---------------- */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
-/* ---------------- SECTIONS ---------------- */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 64px;
+  align-items: center;
+}
 
-.section {
-  background: var(--card);
-  padding: 34px 38px;
-  border-radius: 18px;
-  margin-bottom: 40px;
+.hero img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.15);
+}
+
+/* ---------------- SPLIT SECTIONS ---------------- */
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.split img {
+  width: 100%;
+  border-radius: 28px;
+  display: block;
+}
+
+/* animation states */
+.fade-up {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.7s ease;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
 }
 
-.section.visible {
+.fade-up.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.section:hover {
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+/* ---------------- FEATURE BG ---------------- */
+
+.feature {
+  background: radial-gradient(circle at top, #111827, var(--bg));
 }
 
-h2 {
-  font-size: 1.9rem;
+/* ---------------- PROJECT CARDS ---------------- */
+
+.project-card {
+  background: var(--surface);
+  padding: 60px;
+  border-radius: 32px;
+  margin-bottom: 60px;
+}
+
+.project-card p {
+  max-width: none;
+}
+
+.secondary-project {
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr;
+  gap: 48px;
+  align-items: center;
+  background: var(--surface);
+  padding: 48px;
+  border-radius: 28px;
+  margin-top: 60px;
+}
+
+.secondary-project img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+.secondary-text h3 {
   margin-top: 0;
+  font-size: 1.6rem;
 }
 
-.muted { color: var(--muted); }
-
-/* ---------------- LISTS ---------------- */
-
-ul {
-  padding-left: 20px;
+.secondary-text p {
+  max-width: none;
 }
 
-li {
-  margin-bottom: 12px;
+/* alternate layout */
+.secondary-project.reverse {
+  grid-template-columns: 1.4fr 1.1fr;
+}
+
+.secondary-project.reverse img {
+  order: 2;
+}
+
+/* mobile */
+@media (max-width: 900px) {
+  .secondary-project,
+  .secondary-project.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .secondary-project.reverse img {
+    order: 0;
+  }
 }
 
 /* ---------------- FOOTER ---------------- */
 
 footer {
+  padding: 100px 24px;
   text-align: center;
   color: var(--muted);
-  margin-top: 80px;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 /* ---------------- RESPONSIVE ---------------- */
 
-@media (max-width: 700px) {
-  .hero {
+@media (max-width: 900px) {
+  .hero-grid,
+  .split {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  .hero img {
-    margin: auto;
+
+  p {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 </style>
 </head>
 
 <body>
-<div class="container">
 
-  <!-- HERO -->
-  <div class="hero">
-    <img src="assets/me.jpg" alt="Somansh Dubey" />
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid fade-up">
+    <img src="assets/me.jpg" alt="Somansh Dubey">
     <div>
       <h1>Somansh Dubey</h1>
-      <p class="tagline">
-        I design and build systems that scale, route packets correctly,
-        and survive contact with real-world traffic —
-        <span class="wink">sometimes even on the first try.</span>
-      </p>
-      <p class="muted">
-        Software Engineer · Distributed Systems Engineering · Cisco
+      <p>
+        I build distributed systems that move packets, survive real traffic,
+        and occasionally make future-me thankful.
+        <br><br>
+        Software Engineer at Cisco · Systems · Networking · Applied AI
       </p>
     </div>
   </div>
+</section>
 
-  <!-- ABOUT -->
-  <div class="section">
-    <h2>About</h2>
-    <p>
-      Software Engineer at Cisco working on large-scale networking and
-      distributed systems. I enjoy diving deep into datapaths,
-      control-plane synchronization, and the parts of systems
-      that usually fail at 3 a.m.
-    </p>
-    <p>
-      Formally trained as a Mechanical Engineer from IIT Kanpur
-      (with a minor in Computer Science),
-      which means I overthink edge cases and respect physics.
-    </p>
+<!-- ABOUT -->
+<section>
+  <div class="container split">
+    <div class="fade-up">
+      <h2>About</h2>
+      <p>
+        I am a software engineer who enjoys understanding systems end-to-end —
+        from datapaths and control-plane synchronization to the abstractions
+        engineers rely on every day.
+        <br><br>
+        Trained at IIT Kanpur in Mechanical Engineering with a minor in Computer Science,
+        I tend to think in constraints, failure modes, and real-world behavior.
+      </p>
+    </div>
+    <img class="fade-up"
+     src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+     alt="Systems and engineering abstraction">
   </div>
+</section>
 
-  <!-- EXPERIENCE -->
-  <div class="section">
-    <h2>Experience — Cisco Systems</h2>
-    <p class="muted">Distributed Systems Engineering · Aug 2024 – Present</p>
-
-    <ul>
-      <li>
-        Architected satellite (port-extender) datapath support enabling
-        low-bandwidth access ports to operate over high-bandwidth host interfaces
-        with full control-plane and forwarding-plane synchronization.
-      </li>
-      <li>
-        Built production-grade support for inventory management,
-        environmental monitoring, alarm propagation, and traffic forwarding
-        across host–satellite topologies.
-      </li>
-      <li>
-        Designed an AI-driven microcode testbench test case generator
-        using a Retrieval-Augmented Generation (RAG) pipeline with Milvus,
-        drastically reducing test development time.
-      </li>
-      <li>
-        Reduced microcode test case creation cycles from days to hours by
-        automating test scaffolding, mutation, and validation workflows.
-      </li>
-      <li>
-        Optimized chip statistics allocation and built internal tooling
-        for automated log extraction and error classification
-        during large-scale production escalations.
-      </li>
-    </ul>
+<!-- EXPERIENCE -->
+<section class="feature">
+  <div class="container split">
+    <img class="fade-up"
+      src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200"
+      alt="Networking infrastructure">
+    <div class="fade-up">
+      <h2>Cisco Systems</h2>
+      <p>
+        At Cisco, I work on large-scale distributed networking platforms where
+        correctness, performance, and observability matter.
+        <br><br>
+        My work spans satellite datapaths, control-plane and forwarding-plane
+        synchronization, inventory and environmental monitoring, and validation
+        under sustained line-rate traffic.
+      </p>
+    </div>
   </div>
+</section>
 
-  <!-- PROJECTS -->
-  <div class="section">
-    <h2>Key Projects</h2>
-
-    <p><strong>CF-Stress — Concurrent Online Judge</strong></p>
-    <ul>
-      <li>
-        Built a concurrent online judge in Go with Redis to stress-test
-        competitive programming solutions using adversarial inputs.
-      </li>
-      <li>
-        Supported 500+ concurrent users with ~95% accuracy
-        in identifying failing submissions.
-      </li>
-    </ul>
-
-    <p><strong>Autonomous Ground Vehicle</strong></p>
-    <ul>
-      <li>
-        Implemented CNN-based object detection using ROS and OpenCV
-        for real-time navigation.
-      </li>
-      <li>
-        Evaluated Dijkstra, A*, and flood-fill path planning algorithms
-        across simulated and real environments.
-      </li>
-    </ul>
+<!-- AI FEATURE -->
+<section>
+  <div class="container split">
+    <div class="fade-up">
+      <h2>AI-Driven Engineering</h2>
+      <p>
+        I built an AI-driven microcode testbench test case generator for the ASR9K
+        platform using a Retrieval-Augmented Generation pipeline backed by Milvus.
+        <br><br>
+        This reduced test development cycles from days to hours by automating
+        test scaffolding, mutation, and coverage expansion.
+      </p>
+    </div>
+    <img class="fade-up"
+      src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200"
+      alt="AI systems">
   </div>
+</section>
 
-  <!-- LEADERSHIP -->
-  <div class="section">
-    <h2>Leadership</h2>
-    <p>
-      Head of Public Relations, Antaragni’23 (IIT Kanpur)
-    </p>
-    <ul>
-      <li>
-        Led a 120+ member team across multi-tier coordination structures.
-      </li>
-      <li>
-        Managed sponsorships and partnerships worth INR 20M,
-        increasing festival reach by 1.6× YoY.
-      </li>
-    </ul>
+<!-- PROJECTS -->
+<!-- SELECTED PROJECTS -->
+<section>
+  <div class="container">
+    <h2>Projects</h2>
+
+    <!-- CF-STRESS -->
+    <div class="secondary-project fade-up">
+      <img
+        src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80"
+        alt="Concurrent programming and coding systems">
+
+      <div class="secondary-text">
+        <h3>CF-Stress — Concurrent Online Judge</h3>
+        <p>
+          CF-Stress is a concurrent online judge built in Go with Redis, designed to
+          stress-test competitive programming solutions under large randomized and
+          adversarial input distributions.
+          <br><br>
+          The system supported hundreds of concurrent users during live contest
+          environments, executing sandboxed submissions in parallel while enforcing
+          strict resource and runtime constraints.
+        </p>
+      </div>
+    </div>
+
+    <!-- VISION -->
+    <div class="secondary-project fade-up reverse">
+      <img
+        src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80"
+        alt="Autonomous self-driving robotic car">
+
+      <div class="secondary-text">
+        <h3>Autonomous Ground Vehicle — Team VISiON</h3>
+        <p>
+          As part of Team VISiON at IIT Kanpur, I worked on perception and planning
+          pipelines for an autonomous ground vehicle operating in dynamic environments.
+          <br><br>
+          The project involved CNN-based object detection using ROS and OpenCV, along
+          with classical path-planning algorithms such as Dijkstra and A*, integrated
+          into a closed-loop navigation system.
+        </p>
+      </div>
+    </div>
+
   </div>
+</section>
 
-  <footer>
-    Built with curiosity, caffeine, and an unreasonable love for systems.
-  </footer>
+<!-- LEADERSHIP -->
+<section class="feature">
+  <div class="container split">
+    <img class="fade-up"
+      src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200"
+      alt="Leadership">
+    <div class="fade-up">
+      <h2>Leadership</h2>
+      <p>
+        As Head of Public Relations for Antaragni’23 at IIT Kanpur,
+        I led a 120+ member team, managed large sponsorship portfolios,
+        and helped scale the festival’s reach by over 1.6× year-on-year.
+      </p>
+    </div>
+  </div>
+</section>
 
-</div>
+<footer>
+  Designed to be read slowly. Built with curiosity, caffeine, and respect for systems.
+</footer>
 
 <script>
-  const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.2 });
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  sections.forEach(sec => observer.observe(sec));
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
 </body>
-</html>
+</html>g
